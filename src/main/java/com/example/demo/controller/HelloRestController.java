@@ -2,10 +2,14 @@ package com.example.demo.controller;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.demo.example.model.User;
 
 /**
  * 
@@ -39,6 +43,15 @@ public class HelloRestController {
 	@GetMapping("/param/{name}")
 	public String sayHelloPara(@PathVariable String name) {
 		return "Hello " + name + " From Bridgelabz";
+	}
+	/**
+	 * @PostMapping:handle the HTTP POST requests matched with given URL expression
+	 * @RequestBody:
+	 * @return
+	 */
+	@PostMapping("/post")
+	public String sayHello(@RequestBody User user) {
+		return "Hello " + user.getFirstName() + " " + user.getLastName() + " From Bridgelabz";
 	}
 
 }
